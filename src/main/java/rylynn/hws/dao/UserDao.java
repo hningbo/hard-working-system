@@ -2,6 +2,8 @@ package rylynn.hws.dao;
 
 import rylynn.hws.entity.User;
 
+import java.util.List;
+
 public interface UserDao {
     public void addUser(User newuser);
 
@@ -9,5 +11,7 @@ public interface UserDao {
 
     public void deleteUser(User user);
 
-    public void findByUsername(String username);
+    public User findByUsername(String username);
+
+    public List<User> findAllUser();
 }

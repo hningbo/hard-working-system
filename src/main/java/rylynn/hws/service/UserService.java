@@ -10,10 +10,15 @@ public interface UserService {
     /*
     after 10:25 registerovertime is forbidden...
      */
-    public void registerOvertime(String username);
+    public void registerOvertime(String username ,String place);
 
     public void registerUser(User user);
 
     public void updateUserInfo(User user);
+
+    /*
+    set the status of all users to 0 on the second day
+     */
+    public void refreshStatus();
 
 }
