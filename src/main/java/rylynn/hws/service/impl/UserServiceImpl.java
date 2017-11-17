@@ -15,7 +15,16 @@ public class UserServiceImpl implements UserService{
     private UserDao userDao;
 
     public List<User> findOvertimeUser() {
-        return null;
+        List<User> users = userDao.findAllUser();
+        List<User> overTimeUser = null;
+        for(User user : users)
+        {
+            if(user.getStatus() == 1)
+            {
+                overTimeUser.add(user);
+            }
+        }
+        return overTimeUser;
     }
 
     public void registerOvertime(String username ,String place) {
