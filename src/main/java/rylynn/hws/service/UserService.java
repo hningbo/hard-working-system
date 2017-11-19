@@ -12,7 +12,8 @@ public interface UserService {
      */
     public void registerOvertime(String username ,String place);
 
-    public void registerUser(User user);
+
+    public int registerUser(User user);
 
     public void updateUserInfo(User user);
 

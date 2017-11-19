@@ -28,13 +28,18 @@ public class UserServiceImpl implements UserService{
     }
 
     public void registerOvertime(String username ,String place) {
-        User user = userDao.findByUsername(username);
+        User user = (User) userDao.findByUsername(username);
         user.setStatus(1);
         userDao.updateUser(user);
     }
 
-    public void registerUser(User user) {
+    public int registerUser(User user) {
+        if(userDao.findByUsername(user.getName()) == null)
+        {
+            return 0;
+        }
         userDao.addUser(user);
+        return 1;
     }
 
     public void updateUserInfo(User user) {
@@ -42,6 +47,10 @@ public class UserServiceImpl implements UserService{
     }
 
     public void refreshStatus() {
-
+        List<User> users = userDao.findAllUser();
+        for(User user : users) {
+            user.setStatus(0);
+            userDao.updateUser(user);
+        }
     }
 }

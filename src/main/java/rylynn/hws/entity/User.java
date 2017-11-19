@@ -9,7 +9,7 @@ import javax.annotation.Generated;
 @Document
 public class User {
     @Id
-    private long id;
+    private String id;
 
     @Field("name")
     private String name;
@@ -18,7 +18,7 @@ public class User {
     private String password;
 
     @Field("homenum")
-    private long homeNum;
+    private long homenum;
 
     @Field("place")
     private String place;
@@ -26,15 +26,27 @@ public class User {
     @Field("status")
     private int status;
 
+    @Field("grade")
+    private int grade;
+
     public User()
     {
         super();
     }
 
-    public User(String name, String password, long homeNum) {
+    public User(String name, String password, long homenum ,int grade) {
         this.name = name;
         this.password = password;
-        this.homeNum = homeNum;
+        this.homenum = homenum;
+        this.grade = grade;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getPlace() {
@@ -61,12 +73,12 @@ public class User {
         this.password = password;
     }
 
-    public long getHomeNum() {
-        return homeNum;
+    public long getHomenum() {
+        return homenum;
     }
 
-    public void setHomeNum(long homeNum) {
-        this.homeNum = homeNum;
+    public void setHomenum(long homenum) {
+        this.homenum = homenum;
     }
 
     public int getStatus() {
@@ -75,5 +87,19 @@ public class User {
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String toString()
+    {
+        return "Username is : " + this.name + ", home is " + this.homenum +", status is " + this.status + ", grade is " + this.grade;
+    }
+
+
+    public int getGrade() {
+        return grade;
+    }
+
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
 }
