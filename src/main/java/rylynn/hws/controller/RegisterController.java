@@ -11,6 +11,13 @@ import java.util.Date;
 @Controller
 public class RegisterController {
 
+    @RequestMapping("/")
+    public ModelAndView index()
+    {
+        ModelAndView mav = new ModelAndView("/");
+        mav.addObject("user" ,null);
+        return mav;
+    }
     @RequestMapping("/study.do")
     public ModelAndView regesterOverTime()
     {

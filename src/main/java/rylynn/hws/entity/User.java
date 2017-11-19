@@ -11,6 +11,9 @@ public class User {
     @Id
     private String id;
 
+    @Field("account")
+    private String account;
+
     @Field("name")
     private String name;
 
@@ -34,11 +37,20 @@ public class User {
         super();
     }
 
-    public User(String name, String password, long homenum ,int grade) {
+    public User(String name, String account ,String password, long homenum ,int grade ) {
         this.name = name;
+        this.account = account;
         this.password = password;
         this.homenum = homenum;
         this.grade = grade;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 
     public String getId() {

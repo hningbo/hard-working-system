@@ -14,7 +14,7 @@ public class UserController {
     UserService userService;
 
     @RequestMapping("/registerUser.do")
-    public void registerUser(@RequestParam String name , @RequestParam String password , @RequestParam String homenum , @RequestParam String grade)
+    public void registerUser(@RequestParam String name , @RequestParam String account ,@RequestParam String password , @RequestParam int homenum , @RequestParam String grade)
     {
         int gradenum = 0;
         if(grade.equals("大一"))
@@ -29,7 +29,7 @@ public class UserController {
         {
             gradenum = 3;
         }
-        User user = new User(name ,password ,Integer.parseInt(homenum) ,gradenum);
+        User user = new User(name ,account ,password ,homenum ,gradenum);
 
         userService.registerUser(user);
     }
