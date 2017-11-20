@@ -37,9 +37,9 @@ public class UserDaoImpl implements UserDao {
         template.remove(query ,User.class);
     }
 
-    public User findByUsername(String username) {
+    public User findByAccount(String account) {
 
-        return template.findOne(new Query(where("name").is(username)), User.class);
+        return template.findOne(new Query(where("account").is(account)), User.class);
     }
 
     public List<User> findAllUser() {

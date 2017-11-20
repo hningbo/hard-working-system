@@ -37,7 +37,7 @@ public class User {
         super();
     }
 
-    public User(String name, String account ,String password, long homenum ,int grade ) {
+    public User(String name, String account ,String password, long homenum ,String place ,int grade ) {
         this.name = name;
         this.account = account;
         this.password = password;

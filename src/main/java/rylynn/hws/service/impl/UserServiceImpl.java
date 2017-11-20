@@ -6,6 +6,7 @@ import rylynn.hws.dao.UserDao;
 import rylynn.hws.entity.User;
 import rylynn.hws.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -16,7 +17,9 @@ public class UserServiceImpl implements UserService{
 
     public List<User> findOvertimeUser() {
         List<User> users = userDao.findAllUser();
-        List<User> overTimeUser = null;
+        List<User> overTimeUser = new ArrayList<User>();
+
+
         for(User user : users)
         {
             if(user.getStatus() == 1)
@@ -27,23 +30,55 @@ public class UserServiceImpl implements UserService{
         return overTimeUser;
     }
 
-    public void registerOvertime(String username ,String place) {
-        User user = (User) userDao.findByUsername(username);
+    public void registerOvertime(String account ,String place) {
+        User user = (User) userDao.findByAccount(account);
         user.setStatus(1);
+        user.setPlace(place);
+        userDao.updateUser(user);
+    }
+
+    public void giveupOvertime(String account)
+    {
+        User user = (User) userDao.findByAccount(account);
+        user.setStatus(0);
         userDao.updateUser(user);
     }
 
     public int registerUser(User user) {
-        if(userDao.findByUsername(user.getName()) == null)
+        if(userDao.findByAccount(user.getAccount()) != null)
         {
             return 0;
         }
+
         userDao.addUser(user);
         return 1;
     }
 
     public void updateUserInfo(User user) {
         userDao.updateUser(user);
+    }
+
+    public int userExist(String account) {
+        if(userDao.findByAccount(account) == null)
+        {
+            return 0;
+        }
+        else
+        {
+            return 1;
+        }
+
+    }
+
+    public int checkPassword(String username ,String password)
+    {
+        User user = (User)userDao.findByAccount(username);
+        String pwd = user.getPassword();
+        if(pwd.equals(password))
+        {
+            return 1;
+        }
+        return 0;
     }
 
     public void refreshStatus() {

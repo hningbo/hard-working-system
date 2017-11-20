@@ -12,11 +12,15 @@ public interface UserService {
      */
     public void registerOvertime(String username ,String place);
 
+    public void giveupOvertime(String username);
+
+    public int checkPassword(String username ,String password);
 
     public int registerUser(User user);
 
     public void updateUserInfo(User user);
 
+    public int userExist(String username);
     /*
     set the status of all users to 0 on the second day
      */

@@ -52,11 +52,11 @@
     					<legend>上报加班</legend>
     					<div class="form-group">
     						<label for="">账号</label>
-    						<input type="text" class="form-control" name="account" placeholder="账号" style="width:50%">
+    						<input type="text" class="form-control" name="account" placeholder="账号" style="width:50%" required="true">
     						<label for="">密码</label>
-    						<input type="password" class="form-control" name="password" placeholder="密码" style="width:50%">
+    						<input type="password" class="form-control" name="password" placeholder="密码" style="width:50%" required="true">
                             <label for="">加班地点</label>
-                            <select name="place" id="input" class="form-control" required="required" style="width:50%">
+                            <select name="place" id="input" class="form-control" required="required" style="width:50%" >
                                 <option value="四楼俱乐部">四楼俱乐部</option>
                                 <option value="406">406</option>
                                 <option value="502">502</option>
@@ -65,6 +65,7 @@
     					</div>		
     					<button type="submit" class="btn btn-primary" onclick="study()">上报加班</button>
                         <button type="submit" class="btn btn-primary" onclick="giveup()">退报加班</button>
+                    </form>
                         <a class="btn btn-primary" data-toggle="modal" href='#modal-register'>注册账号</a>
                         <div class="modal fade" id="modal-register">
                             <div class="modal-dialog">
@@ -80,15 +81,15 @@
                                     
                                             <div class="form-group">
                                                 <label for="">姓名</label>
-                                                <input type="text" class="form-control" name="name" placeholder="真实姓名">
+                                                <input type="text" class="form-control" name="name" placeholder="真实姓名" required="true">
                                                 <label for="">账号</label>
-                                                <input type="text" class="form-control" name="account" placeholder="账号">
+                                                <input type="text" class="form-control" name="account" placeholder="账号" required="true">
                                                 <label for="">密码</label>
-                                                <input type="password" class="form-control" name="password" placeholder="密码">
+                                                <input type="password" class="form-control" name="password" placeholder="密码" required="true">
                                                 <label for="">宿舍号</label>
-                                                <input type="number" class="form-control" name="homenum" placeholder="411">
+                                                <input type="number" class="form-control" name="homenum" placeholder="411" required="true">
                                                 <label for="">年级</label>
-                                                <select name="年级" id="input" class="form-control" required="required">
+                                                <select name="grade" id="input" class="form-control" required="required">
                                                     <option value="大一">大一</option>
                                                     <option value="大二">大二</option>
                                                     <option value="大三">大三</option>
@@ -97,7 +98,7 @@
                                         </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                        <button type="submit" class="btn btn-primary" data-toggle="modal" href='#modal-success'>注册账号</button>
+                                        <button type="submit" class="btn btn-primary" data-toggle="modal">注册账号</button>
                                         
                                     </div>
                                     </form>
@@ -105,26 +106,10 @@
                             </div>
                         </div>
     				</form>
-                <div class="modal fade" id="modal-success" >
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">提示信息</h4>
-                            </div>
-                                <div class="modal-body">
-                                注册成功！
-                                </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                        
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><a href="admin.do">点击查看加班情况</a></h3>
+                        <h3 class="panel-title"><a href="admin.do">点击查看今晚加班情况</a></h3>
                     </div>
                     <div class="panel-body">
                     <table class="table">
@@ -142,7 +127,7 @@
                                 <td>${u.name}</td>
                                 <td>${u.homenum}</td>
                                 <td>${u.place}</td>
-                                <td><a href="info.do?name=${u.username}"><button type="button" class="btn btn-default">查看最近加班情况</button></a></td>
+                                <td><a href="info.do?name=${u.name}"><button type="button" class="btn btn-default">查看最近加班情况</button></a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

@@ -2,8 +2,11 @@ package rylynn.hws.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import rylynn.hws.entity.User;
 import rylynn.hws.service.UserService;
 
@@ -13,9 +16,10 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping("/registerUser.do")
-    public void registerUser(@RequestParam String name , @RequestParam String account ,@RequestParam String password , @RequestParam int homenum , @RequestParam String grade)
+    @RequestMapping(value = "/registerUser.do" ,method = RequestMethod.POST)
+    public ModelAndView registerUser(@RequestParam("name") String name , @RequestParam("account") String account , @RequestParam("password") String password , @RequestParam("homenum") int homenum , @RequestParam("grade") String grade)
     {
+        ModelAndView mav = new ModelAndView("result");
         int gradenum = 0;
         if(grade.equals("大一"))
         {
@@ -29,8 +33,16 @@ public class UserController {
         {
             gradenum = 3;
         }
-        User user = new User(name ,account ,password ,homenum ,gradenum);
+        User user = new User(name ,account ,password ,homenum ,null ,gradenum);
 
-        userService.registerUser(user);
+        if(userService.registerUser(user) == 0)
+        {
+            mav.addObject("result" ,"用户已存在");
+        }
+        else
+        {
+            mav.addObject("result" ,"注册成功！");
+        }
+        return mav;
     }
 }
