@@ -26,8 +26,9 @@
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
 
@@ -60,7 +61,7 @@
                                 <option value="502">502</option>
                                 <option value="503">503</option>
                             </select>
-    					</div>		
+    					</div>
     					<button type="submit" class="btn btn-primary" onclick="study()">上报加班</button>
                         <button type="submit" class="btn btn-primary" onclick="giveup()">退报加班</button>
                     </form>
@@ -73,10 +74,10 @@
                                         <h4 class="modal-title">注册</h4>
                                     </div>
                                     <form action="registerUser.do" method="POST" role="form" id="userform">
-                                        
+
                                         <div class="modal-body">
                                             <legend>输入账号信息</legend>
-                                    
+
                                             <div class="form-group">
                                                 <label for="">姓名</label>
                                                 <input type="text" class="form-control" name="name" placeholder="真实姓名" required="true">
@@ -104,14 +105,14 @@
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                         <button type="submit" class="btn btn-primary" data-toggle="modal">注册账号</button>
-                                        
+
                                     </div>
                                     </form>
                                 </div>
                             </div>
                         </div>
     				</form>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><a href="admin.do">点击查看今晚加班情况</a></h3>
@@ -147,7 +148,7 @@
                                         大四
                                     </c:if>
                                 </td>
-                            
+
                                 <td>${u.homenum}</td>
                                 <td>${u.place}</td>
                                 <td><a href="info.do?name=${u.name}"><button type="button" class="btn btn-default">查看最近加班情况</button></a></td>
@@ -156,7 +157,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div>	
+            </div>
     	</div>
     </div>
     	</div>
