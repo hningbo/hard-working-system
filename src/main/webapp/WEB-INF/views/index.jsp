@@ -135,25 +135,21 @@
                             <tr>
                                 <td>${u.name}</td>
                                 <td>${u.unit}</td>
-                                <td><%if(${u.grade}==1)
-                                {
-                                    大一
-                                }
-                                else if(${u.grade}==2)
-                                {
-                                    大二
-                                }
-                                if(${u.grade}==3)
-                                {
-                                    大三
-                                }
-                                if(${u.grade}==4)
-                                {
-                                    大四
-                                }
-                                %>
-                                    
+                                <td>
+                                    <c:if test="${u.grade == 1}">
+                                        大一
+                                    </c:if>
+                                    <c:if test="${u.grade == 2}">
+                                        大二
+                                    </c:if>
+                                    <c:if test="${u.grade == 3}">
+                                        大三
+                                    </c:if>
+                                    <c:if test="${u.grade == 4}">
+                                        大四
+                                    </c:if>
                                 </td>
+                            
                                 <td>${u.homenum}</td>
                                 <td>${u.place}</td>
                                 <td><a href="info.do?name=${u.name}"><button type="button" class="btn btn-default">查看最近加班情况</button></a></td>
