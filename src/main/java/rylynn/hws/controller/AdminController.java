@@ -8,10 +8,7 @@ import rylynn.hws.entity.User;
 import rylynn.hws.service.UserService;
 import rylynn.hws.service.impl.UserServiceImpl;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 @Controller
 public class AdminController {
@@ -60,6 +57,29 @@ public class AdminController {
 
             }
         });
+        List<User> overTime1 = new ArrayList<User>();
+        List<User> overTime2 = new ArrayList<User>();
+        List<User> overTime3 = new ArrayList<User>();
+
+        for(User user :overtimeUser)
+        {
+            if(user.getUnit() == 1)
+            {
+                overTime1.add(user);
+            }
+            else if(user.getUnit() == 2)
+            {
+                overTime2.add(user);
+            }
+            else
+            {
+                overTime3.add(user);
+            }
+        }
+        mav.addObject("overtimeSum" ,overtimeUser.size());
+        mav.addObject("overtime1" ,overTime1.size());
+        mav.addObject("overtime2" ,overTime2.size());
+        mav.addObject("overtime3" ,overTime3.size());
         mav.addObject("user" ,overtimeUser);
         return mav;
     }

@@ -10,11 +10,43 @@ import org.springframework.web.servlet.ModelAndView;
 import rylynn.hws.entity.User;
 import rylynn.hws.service.UserService;
 
+import javax.annotation.PostConstruct;
+import java.util.Date;
+
 @Controller
 public class UserController {
 
     @Autowired
     UserService userService;
+
+    @PostConstruct
+    public void init()
+    {
+        new Thread(){
+            public void run()
+            {
+                while(true)
+                {
+                    if(new Date().getHours() == 6)
+                    {
+                        userService.refreshStatus();
+                        try {
+                            sleep(86400000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    else{
+                        try {
+                            sleep(3600000);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        }.run();
+    }
 
     @RequestMapping(value = "/registerUser.do" ,method = RequestMethod.POST,produces="text/html; charset=UTF-8")
     public ModelAndView registerUser(@RequestParam("name") String name , @RequestParam("account") String account , @RequestParam("password") String password ,

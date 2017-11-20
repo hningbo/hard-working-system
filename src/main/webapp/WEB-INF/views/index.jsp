@@ -111,13 +111,17 @@
                                 </div>
                             </div>
                         </div>
-    				</form>
 
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><a href="admin.do">点击查看今晚加班情况</a></h3>
                     </div>
                     <div class="panel-body">
+                    今晚全d应到96人，实到${96-overtimeSum}人，加班共${overtimeSum}人<br/><br/>
+                    其中：<br/>
+                    单位1应到41人，实到${41-overtime1}人，加班共${overtime1}人<br/>
+                    单位2应到55人，实到${55-overtime2}人，加班共${overtime2}人<br/>
+                    单位3应到人，实到人，加班共${overtime3}人<br/>
                     <table class="table">
                         <caption>今晚加班情况</caption>
                         <thead>
