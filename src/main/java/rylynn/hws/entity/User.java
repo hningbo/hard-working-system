@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
 import javax.annotation.Generated;
 
 @Document
-public class User {
+public class User{
     @Id
     private String id;
 
@@ -16,6 +16,9 @@ public class User {
 
     @Field("name")
     private String name;
+
+    @Field("unit")
+    private int unit;
 
     @Field("password")
     private String password;
@@ -34,15 +37,16 @@ public class User {
 
     public User()
     {
-        super();
     }
 
-    public User(String name, String account ,String password, long homenum ,String place ,int grade ) {
+    public User(String name, String account ,String password, int unit ,long homenum ,String place ,int grade ) {
         this.name = name;
         this.account = account;
         this.password = password;
+        this.unit = unit;
         this.homenum = homenum;
         this.grade = grade;
+        this.place = place;
     }
 
     public String getAccount() {
@@ -107,6 +111,14 @@ public class User {
     }
 
 
+    public int getUnit() {
+        return unit;
+    }
+
+    public void setUnit(int unit) {
+        this.unit = unit;
+    }
+
     public int getGrade() {
         return grade;
     }
@@ -114,4 +126,6 @@ public class User {
     public void setGrade(int grade) {
         this.grade = grade;
     }
+
+
 }

@@ -16,24 +16,15 @@ public class UserController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/registerUser.do" ,method = RequestMethod.POST)
-    public ModelAndView registerUser(@RequestParam("name") String name , @RequestParam("account") String account , @RequestParam("password") String password , @RequestParam("homenum") int homenum , @RequestParam("grade") String grade)
+    @RequestMapping(value = "/registerUser.do" ,method = RequestMethod.POST,produces="text/html; charset=UTF-8")
+    public ModelAndView registerUser(@RequestParam("name") String name , @RequestParam("account") String account , @RequestParam("password") String password ,
+                                     @RequestParam("unit")String unit ,@RequestParam("homenum") int homenum , @RequestParam("grade") String grade)
     {
         ModelAndView mav = new ModelAndView("result");
-        int gradenum = 0;
-        if(grade.equals("大一"))
-        {
-            gradenum = 1;
-        }
-        else if(grade.equals("大二"))
-        {
-            gradenum = 2;
-        }
-        else if(grade.equals("大三"))
-        {
-            gradenum = 3;
-        }
-        User user = new User(name ,account ,password ,homenum ,null ,gradenum);
+
+        int unitnum = Integer.parseInt(unit);
+        int gradenum = Integer.parseInt(grade);
+        User user = new User(name ,account ,password ,unitnum ,homenum ,"",gradenum);
 
         if(userService.registerUser(user) == 0)
         {

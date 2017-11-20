@@ -24,7 +24,7 @@ public class RegisterController {
         return mav;
     }
 
-    @RequestMapping(value = "/study.do" ,method = RequestMethod.POST)
+    @RequestMapping(value = "/study.do" ,method = RequestMethod.POST ,produces="text/html; charset=UTF-8")
     public ModelAndView regesterOverTime(@RequestParam("account") String account, @RequestParam("password")String password, @RequestParam("place") String place) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("result");
@@ -49,7 +49,7 @@ public class RegisterController {
         return mav;
     }
 
-    @RequestMapping(value="/giveup.do",method = RequestMethod.POST)
+    @RequestMapping(value="/giveup.do",method = RequestMethod.POST,produces="text/html; charset=UTF-8")
     public ModelAndView giveupOverTime(@RequestParam("account") String account, @RequestParam("password") String password, @RequestParam("place") String place) {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("result");

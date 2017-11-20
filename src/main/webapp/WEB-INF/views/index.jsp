@@ -48,7 +48,7 @@
     <div class="jumbotron">
     <div class="container">
     			<h1>好好学习，天天向上</h1>
-    				<form name="form" method="POST" role="form">
+    				<form name="form" method="POST" role="form" id="registerform">
     					<legend>上报加班</legend>
     					<div class="form-group">
     						<label for="">账号</label>
@@ -56,7 +56,7 @@
     						<label for="">密码</label>
     						<input type="password" class="form-control" name="password" placeholder="密码" style="width:50%" required="true">
                             <label for="">加班地点</label>
-                            <select name="place" id="input" class="form-control" required="required" style="width:50%" >
+                            <select name="place" form="registerform" id="input" class="form-control" required="required" style="width:50%" >
                                 <option value="四楼俱乐部">四楼俱乐部</option>
                                 <option value="406">406</option>
                                 <option value="502">502</option>
@@ -74,7 +74,7 @@
                                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                                         <h4 class="modal-title">注册</h4>
                                     </div>
-                                    <form action="registerUser.do" method="POST" role="form">
+                                    <form action="registerUser.do" method="POST" role="form" id="userform">
                                         
                                         <div class="modal-body">
                                             <legend>输入账号信息</legend>
@@ -88,11 +88,18 @@
                                                 <input type="password" class="form-control" name="password" placeholder="密码" required="true">
                                                 <label for="">宿舍号</label>
                                                 <input type="number" class="form-control" name="homenum" placeholder="411" required="true">
+                                                <label for="">单位</label>
+                                                <select name="unit" form="userform" id="input" class="form-control">
+                                                    <option value="1">一</option>
+                                                    <option value="2">二</option>
+                                                    <option value="3">三</option>
+                                                </select>
                                                 <label for="">年级</label>
-                                                <select name="grade" id="input" class="form-control" required="required">
-                                                    <option value="大一">大一</option>
-                                                    <option value="大二">大二</option>
-                                                    <option value="大三">大三</option>
+                                                <select name="grade" form="userform" id="input" class="form-control" required="required">
+                                                    <option value="1">大一</option>
+                                                    <option value="2">大二</option>
+                                                    <option value="3">大三</option>
+                                                    <option value="4">大四</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -117,6 +124,8 @@
                         <thead>
                             <tr>
                                 <td>姓名</td>
+                                <td>单位</td>
+                                <td>年级</td>
                                 <td>宿舍号</td>
                                 <td>加班地点</td>
                             </tr>
@@ -125,6 +134,26 @@
                         <c:forEach items="${user}" var="u">
                             <tr>
                                 <td>${u.name}</td>
+                                <td>${u.unit}</td>
+                                <td><%if(${u.grade}==1)
+                                {
+                                    大一
+                                }
+                                else if(${u.grade}==2)
+                                {
+                                    大二
+                                }
+                                if(${u.grade}==3)
+                                {
+                                    大三
+                                }
+                                if(${u.grade}==4)
+                                {
+                                    大四
+                                }
+                                %>
+                                    
+                                </td>
                                 <td>${u.homenum}</td>
                                 <td>${u.place}</td>
                                 <td><a href="info.do?name=${u.name}"><button type="button" class="btn btn-default">查看最近加班情况</button></a></td>

@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
     public void updateUser(User user) {
         Query query = Query.query(Criteria.where("name").is(user.getName()));
         Update update = Update.update("password", user.getPassword()).set("homenum", user.getHomenum()).
-                set("grade" ,user.getGrade()).set("status" ,user.getStatus());
+                set("grade" ,user.getGrade()).set("status" ,user.getStatus()).set("place" ,user.getPlace());
         template.updateFirst(query ,update ,User.class);
     }
 

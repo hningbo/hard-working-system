@@ -29,7 +29,8 @@
 				<h3 class="panel-title">提示</h3>
 			</div>
 			<div class="panel-body">
-				${result}
+				${result}<a href="admin.do">点击返回</a>
+
 			</div>
 		</div>
 			</div>
