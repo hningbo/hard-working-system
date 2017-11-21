@@ -107,7 +107,7 @@ public class User{
 
     public String toString()
     {
-        return "Username is : " + this.name + ", home is " + this.homenum +", status is " + this.status + ", grade is " + this.grade;
+        return "Username is : " + this.name + ", home is " + this.homenum +", unit is " + this.unit + ", grade is " + this.grade + ",status is " + this.status;
     }
 
 
