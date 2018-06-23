@@ -14,7 +14,6 @@
     <context:component-scan base-package="rylynn.hws"></context:component-scan>
 
     <mvc:default-servlet-handler/>
-
     <mvc:annotation-driven/>
 
     <mongo:mongo host="10.113.3.140" port="27017">
